@@ -34,6 +34,7 @@ def animals_index(request):
 
 def animals_detail(request, animal_id):
   animal = Animal.objects.get(id=animal_id)
+  feeding_form = FeedingForm
   return render(request, 'animals/detail.html', {
     'animal': animal, 'feeding_form': feeding_form
   })
