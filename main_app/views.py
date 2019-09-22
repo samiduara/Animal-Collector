@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Animal
 # Create your views here.
-class Animal:  
-  def __init__(self, name, breed, description, age):
+
+def __init__(self, name, breed, description, age):
     self.name = name
     self.breed = breed
     self.description = description
@@ -15,9 +15,11 @@ animals = [
 ]    
 
 def home(request):
-  return HttpResponse('<h1>About The Animal collector</h1>')
+  return render(request, 'about.html')
 
 def about(request):
   return render(request, 'about.html')  
+
 def animals_index(request):
+  animals = Animal.objects.all()
   return render(request, 'animals/index.html', { 'animals': animals })  
